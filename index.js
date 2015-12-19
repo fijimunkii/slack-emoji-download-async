@@ -1,4 +1,5 @@
 var folder = process.env.DIR || 'gifs';
+require('mkdirp')(folder);
 var Promise = require('bluebird');
 var Slack = require('slack-node');
 var https = require('https');
