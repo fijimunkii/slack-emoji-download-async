@@ -5,7 +5,7 @@ var Slack = require('slack-node');
 var https = require('https');
 var fs = require('fs');
 var download = function(url, dest) {
-  return Promise.resolve(new Promise(function(resolve, reject) {
+  return new Promise(function(resolve, reject) {
     var file = fs.createWriteStream(dest);
     https.get(url, function(response) {
       response.pipe(file);
@@ -16,7 +16,7 @@ var download = function(url, dest) {
       fs.unlink(dest);
       reject(err);
     });
-  }));
+  });
 };
 
 if (!process.env.TOKEN) return console.log('need env TOKEN');
