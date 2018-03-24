@@ -14,7 +14,7 @@ var download = function(url, name) {
       Promise.all([
         new Promise(function(resolve, reject) {
           var pngFile = fs.createWriteStream(pngDest);
-          gm(response).selectFrame(0).write(pngDest, function(err) {
+          gm(response).selectFrame(0).resize(512,512).write(pngDest, function(err) {
             if (err) reject(err);
             resolve();
           });
